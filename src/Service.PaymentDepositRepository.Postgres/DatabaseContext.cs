@@ -57,11 +57,10 @@ namespace Service.PaymentDepositRepository.Postgres
 			builder.Property(e => e.CardCvv).IsRequired();
 
 			builder.HasKey(e => e.TransactionId);
-			builder.HasKey(e => e.ExternalId);
-			builder.HasKey(e => e.UserId);
-
+			
+			builder.HasIndex(e => e.ExternalId);
+			builder.HasIndex(e => e.UserId);
 			builder.HasIndex(e => e.TransactionId).IsUnique();
-			builder.HasIndex(e => e.ExternalId).IsUnique();
 		}
 	}
 }

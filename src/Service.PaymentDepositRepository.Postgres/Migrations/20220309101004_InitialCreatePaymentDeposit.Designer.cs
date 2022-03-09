@@ -12,8 +12,8 @@ using Service.PaymentDepositRepository.Postgres;
 namespace Service.PaymentDepositRepository.Postgres.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220303062732_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220309101004_InitialCreatePaymentDeposit")]
+    partial class InitialCreatePaymentDeposit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,7 @@ namespace Service.PaymentDepositRepository.Postgres.Migrations
 
             modelBuilder.Entity("Service.PaymentDepositRepository.Postgres.Models.PaymentDepositRepositoryEntity", b =>
                 {
-                    b.Property<Guid?>("UserId")
+                    b.Property<Guid?>("TransactionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -76,16 +76,18 @@ namespace Service.PaymentDepositRepository.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("TransactionId")
+                    b.Property<Guid?>("UserId")
+                        .IsRequired()
                         .HasColumnType("uuid");
 
-                    b.HasKey("UserId");
+                    b.HasKey("TransactionId");
 
-                    b.HasIndex("ExternalId")
-                        .IsUnique();
+                    b.HasIndex("ExternalId");
 
                     b.HasIndex("TransactionId")
                         .IsUnique();
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("payment_deposit", "education");
                 });

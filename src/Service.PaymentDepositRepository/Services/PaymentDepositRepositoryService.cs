@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Service.Core.Client.Models;
 using Service.PaymentDepositRepository.Grpc;
 using Service.PaymentDepositRepository.Grpc.Models;
+using Service.PaymentDepositRepository.Mappers;
+using Service.PaymentDepositRepository.Postgres.Models;
 using Service.PaymentDepositRepository.Postgres.Services;
 
 namespace Service.PaymentDepositRepository.Services
@@ -39,6 +41,13 @@ namespace Service.PaymentDepositRepository.Services
 			bool result = await _depositRepository.SetState(request.TransactionId, request.State, request.ExternalId);
 
 			return CommonGrpcResponse.Result(result);
+		}
+
+		public async ValueTask<DepositGrpcResponse> GetDepositAsync(GetDepositGrpcRequest request)
+		{
+			PaymentDepositRepositoryEntity result = await _depositRepository.Get(request.TransactionId);
+
+			return result.ToGrpcModel();
 		}
 	}
 }

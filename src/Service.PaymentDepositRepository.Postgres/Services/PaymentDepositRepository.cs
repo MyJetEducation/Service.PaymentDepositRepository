@@ -157,13 +157,14 @@ namespace Service.PaymentDepositRepository.Postgres.Services
 
 		private void DecodeEntity(PaymentDepositRepositoryEntity entity)
 		{
-			entity.CardNumber = EncodeString(entity.CardNumber);
-			entity.CardHolder = EncodeString(entity.CardHolder);
-			entity.CardMonth = EncodeString(entity.CardMonth);
-			entity.CardYear = EncodeString(entity.CardYear);
-			entity.CardCvv = EncodeString(entity.CardCvv);
+			entity.CardNumber = DecodeString(entity.CardNumber);
+			entity.CardHolder = DecodeString(entity.CardHolder);
+			entity.CardMonth = DecodeString(entity.CardMonth);
+			entity.CardYear = DecodeString(entity.CardYear);
+			entity.CardCvv = DecodeString(entity.CardCvv);
 		}
 
 		private string EncodeString(string number) => _encoderDecoder.Encode(number);
+		private string DecodeString(string number) => _encoderDecoder.Decode(number);
 	}
 }

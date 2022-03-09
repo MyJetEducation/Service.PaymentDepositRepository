@@ -13,5 +13,8 @@ namespace Service.PaymentDepositRepository.Grpc
 
 		[OperationContract]
 		ValueTask<CommonGrpcResponse> SetStateAsync(SetStateGrpcRequest request);
+
+		[OperationContract]
+		ValueTask<DepositGrpcResponse> GetDepositAsync(GetDepositGrpcRequest request);
 	}
 }
