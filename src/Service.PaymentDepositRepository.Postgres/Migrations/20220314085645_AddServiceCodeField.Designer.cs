@@ -12,7 +12,7 @@ using Service.PaymentDepositRepository.Postgres;
 namespace Service.PaymentDepositRepository.Postgres.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220314083633_AddServiceCodeField")]
+    [Migration("20220314085645_AddServiceCodeField")]
     partial class AddServiceCodeField
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

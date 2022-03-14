@@ -12,7 +12,7 @@ using Service.PaymentDepositRepository.Postgres;
 namespace Service.PaymentDepositRepository.Postgres.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220309101004_InitialCreatePaymentDeposit")]
+    [Migration("20220314085604_InitialCreatePaymentDeposit")]
     partial class InitialCreatePaymentDeposit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace Service.PaymentDepositRepository.Postgres.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("education")
-                .HasAnnotation("ProductVersion", "6.0.2")
+                .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);

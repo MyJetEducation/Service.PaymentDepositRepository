@@ -8,28 +8,21 @@ namespace Service.PaymentDepositRepository.Postgres.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AddColumn<string>(
                 name: "ServiceCode",
                 schema: "education",
                 table: "payment_deposit",
                 type: "text",
                 nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "text",
-                oldNullable: true);
+                defaultValue: "");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.DropColumn(
                 name: "ServiceCode",
                 schema: "education",
-                table: "payment_deposit",
-                type: "text",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "text");
+                table: "payment_deposit");
         }
     }
 }
