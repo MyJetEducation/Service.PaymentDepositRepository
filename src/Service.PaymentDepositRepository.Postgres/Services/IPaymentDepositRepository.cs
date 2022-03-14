@@ -5,7 +5,7 @@ namespace Service.PaymentDepositRepository.Postgres.Services
 {
 	public interface IPaymentDepositRepository
 	{
-		ValueTask<Guid?> Register(Guid? userId, string provider, decimal amount, string currency, string country, string number, string holder, string month, string year, string cvv);
+		ValueTask<Guid?> Register(Guid? userId, string provider, decimal amount, string currency, string country, string serviceCode, string number, string holder, string month, string year, string cvv);
 
 		ValueTask<bool> SetState(Guid? transactionId, TransactionState state, string externalId = null);
 

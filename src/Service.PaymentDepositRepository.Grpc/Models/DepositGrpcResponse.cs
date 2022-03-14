@@ -43,23 +43,26 @@ namespace Service.PaymentDepositRepository.Grpc.Models
 		[DataMember(Order = 9)]
 		public string Country { get; set; }
 
+		[DataMember(Order = 10)]
+		public string ServiceCode { get; set; }
+		
 		#endregion
 
 		#region Card
 
-		[DataMember(Order = 10)]
+		[DataMember(Order = 11)]
 		public string CardNumber { get; set; }
 
-		[DataMember(Order = 11)]
+		[DataMember(Order = 12)]
 		public string CardHolder { get; set; }
 
-		[DataMember(Order = 12)]
+		[DataMember(Order = 13)]
 		public string CardMonth { get; set; }
 
-		[DataMember(Order = 13)]
+		[DataMember(Order = 14)]
 		public string CardYear { get; set; }
 
-		[DataMember(Order = 14)]
+		[DataMember(Order = 15)]
 		public string CardCvv { get; set; }
 
 		#endregion

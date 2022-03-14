@@ -20,6 +20,7 @@ namespace Service.PaymentDepositRepository.Mappers
 					Amount = entity.Amount,
 					Currency = entity.Currency,
 					Country = entity.Country,
+					ServiceCode = entity.ServiceCode,
 					CardNumber = entity.CardNumber,
 					CardHolder = entity.CardHolder,
 					CardMonth = entity.CardMonth,

@@ -49,6 +49,7 @@ namespace Service.PaymentDepositRepository.Postgres
 			builder.Property(e => e.Amount).IsRequired();
 			builder.Property(e => e.Currency).IsRequired();
 			builder.Property(e => e.Country).IsRequired();
+			builder.Property(e => e.ServiceCode).IsRequired();
 
 			builder.Property(e => e.CardNumber).IsRequired();
 			builder.Property(e => e.CardHolder).IsRequired();

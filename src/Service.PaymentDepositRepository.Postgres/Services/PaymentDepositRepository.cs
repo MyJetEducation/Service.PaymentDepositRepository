@@ -21,7 +21,7 @@ namespace Service.PaymentDepositRepository.Postgres.Services
 			_encoderDecoder = encoderDecoder;
 		}
 
-		public async ValueTask<Guid?> Register(Guid? userId, string provider, decimal amount, string currency, string country, string number, string holder, string month, string year, string cvv)
+		public async ValueTask<Guid?> Register(Guid? userId, string provider, decimal amount, string currency, string country, string serviceCode, string number, string holder, string month, string year, string cvv)
 		{
 			DatabaseContext context = GetContext();
 			Guid? transactionId = Guid.NewGuid();
@@ -40,6 +40,7 @@ namespace Service.PaymentDepositRepository.Postgres.Services
 						Amount = amount,
 						Currency = currency,
 						Country = country,
+						ServiceCode = serviceCode,
 						CardNumber = EncodeString(number),
 						CardHolder = EncodeString(holder),
 						CardMonth = EncodeString(month),

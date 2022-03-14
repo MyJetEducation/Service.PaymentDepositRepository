@@ -35,5 +35,8 @@ namespace Service.PaymentDepositRepository.Grpc.Models
 
 		[DataMember(Order = 10)]
 		public string Cvv { get; set; }
+
+		[DataMember(Order = 11)]
+		public string ServiceCode { get; set; }
 	}
 }

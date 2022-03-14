@@ -24,6 +24,8 @@ namespace Service.PaymentDepositRepository.Postgres.Models
 
 		public string Country { get; set; }
 
+		public string ServiceCode { get; set; }
+
 		#endregion
 
 		#region Card

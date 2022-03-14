@@ -32,6 +32,7 @@ namespace TestApp
 				Currency = "USD",
 				Amount = 100,
 				Country = "UA",
+				ServiceCode = "mascote",
 				Cvv = "123",
 				Holder = "Ivanov Ivan",
 				Month = "01",
