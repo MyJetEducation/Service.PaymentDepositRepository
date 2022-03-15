@@ -50,14 +50,13 @@ namespace Service.PaymentDepositRepository.Postgres
 			builder.Property(e => e.Currency).IsRequired();
 			builder.Property(e => e.Country).IsRequired();
 			builder.Property(e => e.ServiceCode).IsRequired();
-
-			builder.Property(e => e.CardNumberName).IsRequired();
-			builder.Property(e => e.CardNumberHash).IsRequired();
+			builder.Property(e => e.CardId).IsRequired();
 
 			builder.HasKey(e => e.TransactionId);
 			
 			builder.HasIndex(e => e.ExternalId);
 			builder.HasIndex(e => e.UserId);
+			builder.HasIndex(e => e.CardId);
 			builder.HasIndex(e => e.TransactionId).IsUnique();
 		}
 	}

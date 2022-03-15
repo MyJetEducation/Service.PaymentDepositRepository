@@ -11,17 +11,15 @@ namespace Service.PaymentDepositRepository.Postgres.Services
 		private readonly DbContextOptionsBuilder<DatabaseContext> _dbContextOptionsBuilder;
 		private readonly ILogger<PaymentDepositRepository> _logger;
 		private readonly ISystemClock _systemClock;
-		private readonly IEncoderDecoder _encoderDecoder;
 
 		public PaymentDepositRepository(DbContextOptionsBuilder<DatabaseContext> dbContextOptionsBuilder, ILogger<PaymentDepositRepository> logger, ISystemClock systemClock, IEncoderDecoder encoderDecoder)
 		{
 			_dbContextOptionsBuilder = dbContextOptionsBuilder;
 			_logger = logger;
 			_systemClock = systemClock;
-			_encoderDecoder = encoderDecoder;
 		}
 
-		public async ValueTask<Guid?> Register(Guid? userId, string provider, decimal amount, string currency, string country, string serviceCode, string number, string holder, string month, string year, string cvv)
+		public async ValueTask<Guid?> Register(Guid? userId, string provider, decimal amount, string currency, string country, string serviceCode, Guid? cardId)
 		{
 			DatabaseContext context = GetContext();
 			Guid? transactionId = Guid.NewGuid();
@@ -41,8 +39,7 @@ namespace Service.PaymentDepositRepository.Postgres.Services
 						Currency = currency,
 						Country = country,
 						ServiceCode = serviceCode,
-						CardNumberName = GetCardName(number),
-						CardNumberHash = _encoderDecoder.Hash(number)
+						CardId = cardId
 					});
 
 				await context.SaveChangesAsync();
@@ -138,12 +135,5 @@ namespace Service.PaymentDepositRepository.Postgres.Services
 		}
 
 		private DatabaseContext GetContext() => DatabaseContext.Create(_dbContextOptionsBuilder);
-
-		private static string GetCardName(string number)
-		{
-			int len = number.Length;
-
-			return len <= 4 ? number : $"{string.Concat(Enumerable.Repeat("*", len - 4))}{number.Substring(len - 4, 4)}";
-		}
 	}
 }

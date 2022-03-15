@@ -9,10 +9,6 @@ namespace Service.PaymentDepositRepository.Modules
 		{
 			builder.RegisterType<Postgres.Services.PaymentDepositRepository>().AsImplementedInterfaces().SingleInstance();
 			builder.RegisterType<SystemClock>().AsImplementedInterfaces().SingleInstance();
-
-			builder.Register(context => new EncoderDecoder(Program.EncodingKey))
-				.As<IEncoderDecoder>()
-				.SingleInstance();
 		}
 	}
 }

@@ -21,8 +21,7 @@ namespace Service.PaymentDepositRepository.Mappers
 					Currency = entity.Currency,
 					Country = entity.Country,
 					ServiceCode = entity.ServiceCode,
-					CardNumberName = entity.CardNumberName,
-					CardNumberHash = entity.CardNumberHash
+					CardId = entity.CardId
 				}
 		};
 	}

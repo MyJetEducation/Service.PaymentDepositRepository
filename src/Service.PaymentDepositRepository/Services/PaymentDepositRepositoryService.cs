@@ -24,11 +24,7 @@ namespace Service.PaymentDepositRepository.Services
 				request.Currency,
 				request.Country,
 				request.ServiceCode,
-				request.Number,
-				request.Holder,
-				request.Month,
-				request.Year,
-				request.Cvv
+				request.CardId
 				);
 
 			return new RegisterGrpcResponse

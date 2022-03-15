@@ -14,7 +14,7 @@ namespace TestApp
 {
 	public class Program
 	{
-		private static async Task Main(string[] args)
+		private static async Task Main()
 		{
 			GrpcClientFactory.AllowUnencryptedHttp2 = true;
 			ILogger<Program> logger = LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<Program>();
@@ -33,11 +33,7 @@ namespace TestApp
 				Amount = 100,
 				Country = "UA",
 				ServiceCode = "mascote",
-				Cvv = "123",
-				Holder = "Ivanov Ivan",
-				Month = "01",
-				Year = "22",
-				Number = "1234 1234 1234 1234",
+				CardId = new Guid("8d21d06b-aaa2-4f7b-89da-2912cb921b04"),
 				UserId = new Guid("c2ebe74f-202a-416f-89d1-9ccbe9ed2492")
 			});
 

@@ -16,6 +16,8 @@ namespace Service.PaymentDepositRepository.Postgres.Models
 
 		public string Provider { get; set; }
 
+		public Guid? CardId { get; set; }
+
 		#region Payment
 
 		public decimal Amount { get; set; }
@@ -25,14 +27,6 @@ namespace Service.PaymentDepositRepository.Postgres.Models
 		public string Country { get; set; }
 
 		public string ServiceCode { get; set; }
-
-		#endregion
-
-		#region Card
-
-		public string CardNumberName { get; set; }
-
-		public string CardNumberHash { get; set; }
 
 		#endregion
 	}

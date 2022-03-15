@@ -20,13 +20,10 @@ namespace Service.PaymentDepositRepository
 
 		public static ILoggerFactory LogFactory { get; private set; }
 
-		public static string EncodingKey { get; set; }
-
 		public static void Main(string[] args)
 		{
 			Console.Title = "MyJetEducation Service.PaymentDepositRepository";
 			Settings = LoadSettings();
-			EncodingKey = ProgramHelper.GetEnvVariable("ENCODING_KEY");
 
 			using ILoggerFactory loggerFactory = LogConfigurator.ConfigureElk(Configuration.ProductName, Settings.SeqServiceUrl, Settings.ElkLogs);
 			LogFactory = loggerFactory;
