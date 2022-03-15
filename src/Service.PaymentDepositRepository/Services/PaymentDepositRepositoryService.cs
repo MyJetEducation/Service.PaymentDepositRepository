@@ -11,9 +11,9 @@ namespace Service.PaymentDepositRepository.Services
 {
 	public class PaymentDepositRepositoryService : IPaymentDepositRepositoryService
 	{
-		private readonly IPaymentDepositRepository _depositRepository;
+		private readonly IDepositRepository _depositRepository;
 
-		public PaymentDepositRepositoryService(IPaymentDepositRepository depositRepository) => _depositRepository = depositRepository;
+		public PaymentDepositRepositoryService(IDepositRepository depositRepository) => _depositRepository = depositRepository;
 
 		public async ValueTask<RegisterGrpcResponse> RegisterAsync(RegisterGrpcRequest request)
 		{

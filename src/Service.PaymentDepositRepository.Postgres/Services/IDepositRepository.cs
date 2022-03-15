@@ -3,7 +3,7 @@ using Service.PaymentDepositRepository.Postgres.Models;
 
 namespace Service.PaymentDepositRepository.Postgres.Services
 {
-	public interface IPaymentDepositRepository
+	public interface IDepositRepository
 	{
 		ValueTask<Guid?> Register(Guid? userId, string provider, decimal amount, string currency, string country, string serviceCode, Guid? cardId);
 

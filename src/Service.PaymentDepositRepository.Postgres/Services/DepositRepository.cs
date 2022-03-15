@@ -6,13 +6,13 @@ using Service.PaymentDepositRepository.Postgres.Models;
 
 namespace Service.PaymentDepositRepository.Postgres.Services
 {
-	public class PaymentDepositRepository : IPaymentDepositRepository
+	public class DepositRepository : IDepositRepository
 	{
 		private readonly DbContextOptionsBuilder<DatabaseContext> _dbContextOptionsBuilder;
-		private readonly ILogger<PaymentDepositRepository> _logger;
+		private readonly ILogger<DepositRepository> _logger;
 		private readonly ISystemClock _systemClock;
 
-		public PaymentDepositRepository(DbContextOptionsBuilder<DatabaseContext> dbContextOptionsBuilder, ILogger<PaymentDepositRepository> logger, ISystemClock systemClock, IEncoderDecoder encoderDecoder)
+		public DepositRepository(DbContextOptionsBuilder<DatabaseContext> dbContextOptionsBuilder, ILogger<DepositRepository> logger, ISystemClock systemClock)
 		{
 			_dbContextOptionsBuilder = dbContextOptionsBuilder;
 			_logger = logger;
