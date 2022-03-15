@@ -51,19 +51,10 @@ namespace Service.PaymentDepositRepository.Grpc.Models
 		#region Card
 
 		[DataMember(Order = 11)]
-		public string CardNumber { get; set; }
+		public string CardNumberName { get; set; }
 
 		[DataMember(Order = 12)]
-		public string CardHolder { get; set; }
-
-		[DataMember(Order = 13)]
-		public string CardMonth { get; set; }
-
-		[DataMember(Order = 14)]
-		public string CardYear { get; set; }
-
-		[DataMember(Order = 15)]
-		public string CardCvv { get; set; }
+		public string CardNumberHash { get; set; }
 
 		#endregion
 	}

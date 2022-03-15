@@ -41,11 +41,8 @@ namespace Service.PaymentDepositRepository.Postgres.Services
 						Currency = currency,
 						Country = country,
 						ServiceCode = serviceCode,
-						CardNumber = EncodeString(number),
-						CardHolder = EncodeString(holder),
-						CardMonth = EncodeString(month),
-						CardYear = EncodeString(year),
-						CardCvv = EncodeString(cvv)
+						CardNumberName = GetCardName(number),
+						CardNumberHash = _encoderDecoder.Hash(number)
 					});
 
 				await context.SaveChangesAsync();
@@ -82,23 +79,9 @@ namespace Service.PaymentDepositRepository.Postgres.Services
 			return await UpdateEntity(entity, context);
 		}
 
-		public async ValueTask<PaymentDepositRepositoryEntity> Get(Guid? transactionId)
-		{
-			PaymentDepositRepositoryEntity entity = await Get(GetContext(), transactionId);
+		public async ValueTask<PaymentDepositRepositoryEntity> Get(Guid? transactionId) => await Get(GetContext(), transactionId);
 
-			DecodeEntity(entity);
-
-			return entity;
-		}
-
-		public async ValueTask<PaymentDepositRepositoryEntity> Get(string externalId)
-		{
-			PaymentDepositRepositoryEntity entity = await Get(GetContext(), externalId);
-
-			DecodeEntity(entity);
-
-			return entity;
-		}
+		public async ValueTask<PaymentDepositRepositoryEntity> Get(string externalId) => await Get(GetContext(), externalId);
 
 		public async ValueTask<bool> Update(PaymentDepositRepositoryEntity entity) => await UpdateEntity(entity, GetContext());
 
@@ -156,16 +139,11 @@ namespace Service.PaymentDepositRepository.Postgres.Services
 
 		private DatabaseContext GetContext() => DatabaseContext.Create(_dbContextOptionsBuilder);
 
-		private void DecodeEntity(PaymentDepositRepositoryEntity entity)
+		private static string GetCardName(string number)
 		{
-			entity.CardNumber = DecodeString(entity.CardNumber);
-			entity.CardHolder = DecodeString(entity.CardHolder);
-			entity.CardMonth = DecodeString(entity.CardMonth);
-			entity.CardYear = DecodeString(entity.CardYear);
-			entity.CardCvv = DecodeString(entity.CardCvv);
-		}
+			int len = number.Length;
 
-		private string EncodeString(string number) => _encoderDecoder.Encode(number);
-		private string DecodeString(string number) => _encoderDecoder.Decode(number);
+			return len <= 4 ? number : $"{string.Concat(Enumerable.Repeat("*", len - 4))}{number.Substring(len - 4, 4)}";
+		}
 	}
 }

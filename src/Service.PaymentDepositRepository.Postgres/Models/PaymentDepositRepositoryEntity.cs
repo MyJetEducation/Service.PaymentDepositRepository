@@ -30,15 +30,9 @@ namespace Service.PaymentDepositRepository.Postgres.Models
 
 		#region Card
 
-		public string CardNumber { get; set; }
+		public string CardNumberName { get; set; }
 
-		public string CardHolder { get; set; }
-
-		public string CardMonth { get; set; }
-
-		public string CardYear { get; set; }
-
-		public string CardCvv { get; set; }
+		public string CardNumberHash { get; set; }
 
 		#endregion
 	}
